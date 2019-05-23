@@ -4,44 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link  href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
- <style>
-    body {
-    display:flex
-}
-.words {
-    margin:auto;
-    width:1000px;
-    background: dodgerblue;
-    border-radius: 5px;
-    color:wheat;
-    padding: 20px;
-    box-shadow: 10px 10px 10px  black;
-    text-align: center
-}
-p {
-    font-size: 30px;
-    text-shadow: 1px 1px 0px black
-}
-.firstp:hover {
-    color: #f00;
-    -webkit-filter: invert(100%);
-    filter: invert(100%);
-    background: tomato  
-}
-.firstp {
-    color :rgb(255, 255, 255);
-    font-size: 20px;
-    background: rgb(76, 76, 148);
-    border: 1px solid rgb(12, 48, 59);
-    padding: 5px;
-    border-radius: 5px;
-    width: 200px;
-    cursor: pointer;
-}
-</style>
+ 
 
     <div class="words">
         <audio id="alf" src="UAalf.mp3"> </audio>
@@ -53,55 +21,8 @@ p {
     <hr>
         
     </div>
-    <script>
-const alf= document.getElementById('alf');
-const ebb= document.getElementById('ebb');
-const audio= document.querySelector('audio');
+    <script type="text/javascript" src="/script.js">
 
-
-window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-console.log(SpeechRecognition);
-
-const recognition = new SpeechRecognition();
-recognition.interimResults = true;
-let firstP= document.querySelector('.firstp')
-let p = document.createElement('p');
-const words = document.querySelector('.words');
-words.prepend(p)
-recognition.addEventListener('result', e => {
-    const transcript=         //  e.results[0][0].transcript   
-    Array.from(e.results)
-        .map(result=> result[0])
-          .map(result=> result.transcript)
-        .join('')
-console.log(transcript)
-if( transcript.includes('turn the lights on')) {
-    words.style.backgroundColor="yellow"
-    
-}else if (transcript.includes('turn the lights off')) {
-    words.style.backgroundColor="black"
-}else if (transcript.includes('play Alfred')){
-    alf.play()
-}else if (transcript.includes('stop')) {
-    alf.pause(),
-    ebb.pause()
-}else if (transcript.includes('play ebb and flow')) {
-    ebb.play()
-}
-
-p.textContent=transcript
-
-if(e.results[0].isFinal) {
-    p= document.createElement('p')
-    words.prepend(p)
-}
-
-});
-// const reload= reload()
-// firstP.addEventListener('click', reload)
-
-recognition.addEventListener('end', recognition.start)
-recognition.start()
-        </script>
+    </script>
 </body>
 </html>
